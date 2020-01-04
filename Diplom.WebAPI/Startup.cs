@@ -27,6 +27,14 @@ namespace Diplom.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSwaggerDocument(opt =>
+            {
+                opt.Title = "Diplom";
+                opt.Version = "1.0";
+                opt.Description = "API for diplom";
+                opt.DocumentName = "Diplom";
+            });
+
             services.AddDbContext<Context>(opt =>
             {
                 opt.UseSqlite("Data Source=diplom.db");
@@ -38,12 +46,30 @@ namespace Diplom.WebAPI
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();   
             }
 
-            app.UseRouting();
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<Context>();
+                context.Database.EnsureCreated();
+            }
 
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyHeader()
+                .AllowAnyMethod()
+                .WithOrigins("http://localhost:4200")
+                .AllowCredentials();
+            });
+
+            app.UseHttpsRedirection();
+            app.UseRouting();
             app.UseAuthorization();
+
+            //add the Swagger generator and the Swagger UI middlewares
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseEndpoints(endpoints =>
             {
