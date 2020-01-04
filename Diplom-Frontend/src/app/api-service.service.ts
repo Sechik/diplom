@@ -247,7 +247,6 @@ export class CustomersClient {
                 "Accept": "application/json"
             })
         };
-
         return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
             return this.processDeleteCustomer(response_);
         })).pipe(_observableCatch((response_: any) => {
