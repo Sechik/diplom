@@ -1,7 +1,27 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <button mat-button [matMenuTriggerFor]="menu">Производители</button>
-  <mat-menu #menu="matMenu">
+  <button mat-button [matMenuTriggerFor]="menuDeal">Сделки</button>
+  <mat-menu #menuDeal="matMenu">
+    <button mat-menu-item routerLink="/list-deal">Список</button>
+    <button mat-menu-item routerLink="/add-deal">Добавить новую</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="menuProduct">Продукты</button>
+  <mat-menu #menuProduct="matMenu">
+    <button mat-menu-item routerLink="/list-product">Список</button>
+    <button mat-menu-item routerLink="/add-product">Добавить новый</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="menuOrg">Организации и физ. лица</button>
+  <mat-menu #menuOrg="matMenu">
+    <button mat-menu-item routerLink="/list-organization">Список</button>
+    <button mat-menu-item routerLink="/add-organization">Добавить новую</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="menuWagehouse">Склад</button>
+  <mat-menu #menuWagehouse="matMenu">
+    <button mat-menu-item routerLink="/list-wagehouse">Список</button>
+    <button mat-menu-item routerLink="/add-wagehouse">Добавить новую</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="menuCustomer">Производители</button>
+  <mat-menu #menuCustomer="matMenu">
     <button mat-menu-item routerLink="/list-customer">Список</button>
     <button mat-menu-item routerLink="/add-customer">Добавить нового</button>
   </mat-menu>

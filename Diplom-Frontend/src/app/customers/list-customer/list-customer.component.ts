@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ListCustomerComponent implements AfterViewInit, OnInit {
   customers = new MatTableDataSource<Customer>();
-  displayedColumns: string[] = ['id', 'name', 'cost', 'customer', 'measure'];
+  displayedColumns: string[] = ['id', 'name', 'address', 'phones', 'actions'];
   paginator: MatPaginator;
   sort: MatSort;
 
