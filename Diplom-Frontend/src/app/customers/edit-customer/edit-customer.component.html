@@ -1,5 +1,9 @@
 <h2> Редактирование изготовителя</h2>
 <form [formGroup]="editCustomerForm" class="container" (ngSubmit)="editCustomer()" method="POST" >
+  <mat-form-field for="id" hidden>
+    <input type="text" matInput formControlName="id" name="id" id="id" hidden>
+  </mat-form-field>
+
   <mat-form-field for="name">
     <input type="text" matInput formControlName="name" name="name" id="name" placeholder="Название изготовителя">
   </mat-form-field>

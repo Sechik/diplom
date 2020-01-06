@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomersClient, Customer } from 'src/app/api-service.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-customer',
@@ -12,12 +12,13 @@ export class EditCustomerComponent implements OnInit {
 
   editCustomerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private customersClient: CustomersClient, private customer: Customer,
-              private router: Router) {
+  constructor(private formBuilder: FormBuilder, private customersClient: CustomersClient,
+              private router: Router, private activatedRoute: ActivatedRoute) {
     this.editCustomerForm = this.formBuilder.group({
-      name: [customer.name, Validators.required],
-      address: [customer.address, Validators.required],
-      phones: [customer.phones, Validators.required]
+      id: [this.activatedRoute.snapshot.queryParamMap.get('id'), null],
+      name: [this.activatedRoute.snapshot.queryParamMap.get('name'), Validators.required],
+      address: [this.activatedRoute.snapshot.queryParamMap.get('address'), Validators.required],
+      phones: [this.activatedRoute.snapshot.queryParamMap.get('phones'), Validators.required]
     });
    }
 
@@ -25,7 +26,7 @@ export class EditCustomerComponent implements OnInit {
   }
 
   editCustomer() {
-    this.customersClient.putCustomer(this.customer.id, this.editCustomerForm.value).subscribe(data => {
+    this.customersClient.putCustomer(this.editCustomerForm.get('id').value, this.editCustomerForm.value).subscribe(data => {
       console.log('yspex');
     });
   }

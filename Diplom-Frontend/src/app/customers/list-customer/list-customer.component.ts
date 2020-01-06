@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { state } from '@angular/animations';
 
 @Component({
   selector: 'app-list-customer',
@@ -48,8 +49,9 @@ export class ListCustomerComponent implements AfterViewInit, OnInit {
     });
   }
 
-  editCustomer(customer: Customer) {
-    this.router.navigate(['edit-customer']);
+  editCustomer(editCustomer: Customer) {
+    this.router.navigate(['edit-customer'],  { queryParams: {id: editCustomer.id, name: editCustomer.name,
+      address: editCustomer.address, phones: editCustomer.phones } });
   }
 
   toAddCustomer() {
