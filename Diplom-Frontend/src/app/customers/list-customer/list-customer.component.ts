@@ -1,5 +1,3 @@
-import { element } from 'protractor';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CustomersClient, Customer } from 'src/app/api-service.service';
 import { MatSort } from '@angular/material/sort';
@@ -14,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class ListCustomerComponent implements AfterViewInit, OnInit {
   customers = new MatTableDataSource<Customer>();
-  displayedColumns: string[] = ['id', 'name', 'address', 'phones', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'cost', 'customer', 'measure'];
   paginator: MatPaginator;
   sort: MatSort;
 

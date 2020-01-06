@@ -11,6 +11,18 @@ import { ListCustomerComponent } from './customers/list-customer/list-customer.c
 import { CustomersClient } from './api-service.service';
 import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
+import { ListProductComponent } from './products/list-product/list-product.component';
+import { AddProductComponent } from './products/add-product/add-product.component';
+import { EditProductComponent } from './products/edit-product/edit-product.component';
+import { ListOrganizationComponent } from './organizations/list-organization/list-organization.component';
+import { AddOrganizationComponent } from './organizations/add-organization/add-organization.component';
+import { EditOrganizationComponent } from './organizations/edit-organization/edit-organization.component';
+import { ListWagehouseComponent } from './wagehouses/list-wagehouse/list-wagehouse.component';
+import { AddWagehouseComponent } from './wagehouses/add-wagehouse/add-wagehouse.component';
+import { EditWagehouseComponent } from './wagehouses/edit-wagehouse/edit-wagehouse.component';
+import { ListDealComponent } from './deals/list-deal/list-deal.component';
+import { AddDealComponent } from './deals/add-deal/add-deal.component';
+import { EditDealComponent } from './deals/edit-deal/edit-deal.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +30,18 @@ import { EditCustomerComponent } from './customers/edit-customer/edit-customer.c
     ListCustomerComponent,
     AddCustomerComponent,
     EditCustomerComponent,
+    ListProductComponent,
+    AddProductComponent,
+    EditProductComponent,
+    ListOrganizationComponent,
+    AddOrganizationComponent,
+    EditOrganizationComponent,
+    ListWagehouseComponent,
+    AddWagehouseComponent,
+    EditWagehouseComponent,
+    ListDealComponent,
+    AddDealComponent,
+    EditDealComponent,
   ],
   imports: [
     BrowserModule,
