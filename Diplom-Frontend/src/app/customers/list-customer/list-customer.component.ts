@@ -1,9 +1,11 @@
+import { element } from 'protractor';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CustomersClient, Customer } from 'src/app/api-service.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-customer',
@@ -11,18 +13,13 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./list-customer.component.scss']
 })
 export class ListCustomerComponent implements AfterViewInit, OnInit {
-  customers = new MatTableDataSource();
+  customers = new MatTableDataSource<Customer>();
   displayedColumns: string[] = ['id', 'name', 'address', 'phones', 'actions'];
-  customersClient: CustomersClient;
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(private httpClient: HttpClient) {
-    this.customersClient = new CustomersClient(httpClient);
-    this.customersClient.getCustomers().subscribe(response => {
-      this.customers =  new MatTableDataSource(response);
-    });
-  }
+
+  constructor(private customersClient: CustomersClient, private router: Router) { }
 
   @ViewChild(MatPaginator, {static: false}) set setPaginator(paginator: MatPaginator) {
     this.customers.paginator = paginator;
@@ -38,15 +35,27 @@ export class ListCustomerComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
+    this.customersClient.getCustomers().subscribe(response => {
+    this.customers.data = response;
+    });
   }
-
 
   applyFilter(filterValue: string) {
     this.customers.filter = filterValue.trim().toLowerCase();
   }
 
   deleteCustomer(id: string) {
-    this.customersClient.deleteCustomer(id);
+    this.customersClient.deleteCustomer(id).subscribe(responseFromServer => {
+      this.customers.data = this.customers.data.filter(eachItem => eachItem.id !== responseFromServer.id);
+    });
+  }
+
+  editCustomer(customer: Customer) {
+    this.router.navigate(['edit-customer']);
+  }
+
+  toAddCustomer() {
+    this.router.navigate(['add-customer']);
   }
 
 }

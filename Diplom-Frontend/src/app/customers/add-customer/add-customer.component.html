@@ -1,0 +1,17 @@
+<h2> Добавление изготовителя</h2>
+<form [formGroup]="addCustomerForm" class="container" (ngSubmit)="addCustomer()" method="POST" >
+  <mat-form-field for="name">
+    <input type="text" matInput formControlName="name" name="name" id="name" placeholder="Название изготовителя">
+  </mat-form-field>
+
+  <mat-form-field for="address">
+    <input type="text" matInput formControlName="address" name="address" id="address" placeholder="Адрес">
+  </mat-form-field>
+
+  <mat-form-field for="phones">
+    <input type="text" matInput formControlName="phones" name="phones" id="phones" placeholder="Телефон">
+  </mat-form-field>
+  <div> {{ message }}</div>
+  <button mat-raised-button type="submit">Добавить</button>
+  <button mat-raised-button type="button" (click)="toCustomerList()" >К списку производителей</button>
+</form>

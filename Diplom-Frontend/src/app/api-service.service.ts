@@ -114,7 +114,7 @@ export class CustomersClient {
             (<any>response).error instanceof Blob ? (<any>response).error : undefined;
 
         let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }};
-        if (status === 200) {
+        if (status === 200 || status === 201) {
             return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
             let result200: any = null;
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
@@ -247,7 +247,7 @@ export class CustomersClient {
                 "Accept": "application/json"
             })
         };
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+        return this.http.delete(url_, options_).pipe(_observableMergeMap((response_ : any) => {
             return this.processDeleteCustomer(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {

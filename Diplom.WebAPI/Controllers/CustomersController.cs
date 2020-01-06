@@ -77,7 +77,7 @@ namespace Diplom.WebAPI.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
+        public async Task<ActionResult<Customer>> PostCustomer([FromBody] Customer customer)
         {
             _context.Customers.Add(customer);
             try

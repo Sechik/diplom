@@ -1,6 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-
+  <button mat-button [matMenuTriggerFor]="menu">Производители</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/list-customer">Список</button>
+    <button mat-menu-item routerLink="/add-customer">Добавить нового</button>
+  </mat-menu>
 </div>
-<app-list-customer>Загрузка...</app-list-customer>
 <router-outlet></router-outlet>
