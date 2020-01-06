@@ -1,1 +1,26 @@
-<p>edit-product works!</p>
+<h2> Изменение продукта</h2>
+<form [formGroup]="editProductForm" class="container" (ngSubmit)="editProduct()" method="POST" >
+  <mat-form-field for="name">
+    <input type="text" matInput formControlName="name" name="name" id="name" placeholder="Название продукта">
+  </mat-form-field>
+
+  <mat-form-field for="cost">
+    <input type="number" matInput formControlName="cost" name="cost" id="cost" placeholder="Стоимость">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Производитель" formControlName="customer" name="customer" id="customer" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field for="measure">
+    <input type="text" matInput formControlName="measure" name="measure" id="measure" placeholder="Ед. измер.">
+  </mat-form-field>
+  <div> {{ message }}</div>
+  <button mat-raised-button type="submit">Добавить</button>
+  <button mat-raised-button type="button" (click)="toProductList()" >К списку продуктов</button>
+</form>

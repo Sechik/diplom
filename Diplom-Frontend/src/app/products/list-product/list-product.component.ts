@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ListProductComponent implements OnInit, AfterViewInit {
   products = new MatTableDataSource<Product>();
-  displayedColumns: string[] = ['id', 'name', 'address', 'phones', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'cost', 'customer', 'measure', 'actions'];
   paginator: MatPaginator;
   sort: MatSort;
 
@@ -41,10 +41,11 @@ export class ListProductComponent implements OnInit, AfterViewInit {
     this.products.filter = filterValue.trim().toLowerCase();
   }
 
-  addProduct() {
+  toAddProduct() {
+    this.router.navigate(['add-product']);
   }
 
-  editProduct() {}
+  editProduct(product: Product) {}
 
   deleteProduct(id: string) {
     this.productsClient.deleteProduct(id).subscribe(response => {

@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListCustomerComponent } from './customers/list-customer/list-customer.component';
-import { CustomersClient } from './api-service.service';
+import { CustomersClient, ProductsClient, OrganizationsClient, WagehousesClient, DealsClient } from './api-service.service';
 import { AddCustomerComponent } from './customers/add-customer/add-customer.component';
 import { EditCustomerComponent } from './customers/edit-customer/edit-customer.component';
 import { ListProductComponent } from './products/list-product/list-product.component';
@@ -51,7 +51,7 @@ import { EditDealComponent } from './deals/edit-deal/edit-deal.component';
     MatModule,
     ReactiveFormsModule
   ],
-  providers: [CustomersClient],
+  providers: [CustomersClient, ProductsClient, OrganizationsClient, WagehousesClient, DealsClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

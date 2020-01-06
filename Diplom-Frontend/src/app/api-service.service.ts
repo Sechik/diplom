@@ -518,7 +518,7 @@ export class DealsClient {
             })
         };
 
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+        return this.http.delete(url_, options_).pipe(_observableMergeMap((response_ : any) => {
             return this.processDeleteDeal(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
@@ -789,7 +789,7 @@ export class OrganizationsClient {
             })
         };
 
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+        return this.http.delete(url_, options_).pipe(_observableMergeMap((response_ : any) => {
             return this.processDeleteOrganization(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
@@ -1060,7 +1060,7 @@ export class ProductsClient {
             })
         };
 
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+        return this.http.delete(url_, options_).pipe(_observableMergeMap((response_ : any) => {
             return this.processDeleteProduct(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
@@ -1331,7 +1331,7 @@ export class WagehousesClient {
             })
         };
 
-        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+        return this.http.delete(url_, options_).pipe(_observableMergeMap((response_ : any) => {
             return this.processDeleteWagehouse(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
