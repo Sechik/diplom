@@ -1,1 +1,73 @@
-<p>list-organization works!</p>
+<h2> Список организация и физ. лиц</h2>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Введите название организации">
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="organizations" matSort>
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id" hidden>
+      <th mat-header-cell *matHeaderCellDef hidden> Id </th>
+      <td mat-cell *matCellDef="let element" hidden> {{element.id}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Название </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    <!-- Address Column -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Адрес </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+    <!-- Phones Column -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef> Телефон </th>
+      <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    </ng-container>
+    <!-- isJuridical Column -->
+    <ng-container matColumnDef="isJuridical">
+      <th mat-header-cell *matHeaderCellDef> Юр. лицо </th>
+      <td mat-cell *matCellDef="let element"> {{element.isJuridical}}</td>
+    </ng-container>
+    <!-- Contract Column -->
+    <ng-container matColumnDef="contract">
+      <th mat-header-cell *matHeaderCellDef> № договора </th>
+      <td mat-cell *matCellDef="let element"> {{element.contract}}</td>
+    </ng-container>
+    <!-- BankCode Column -->
+    <ng-container matColumnDef="bankCode">
+      <th mat-header-cell *matHeaderCellDef> Код банка </th>
+      <td mat-cell *matCellDef="let element"> {{element.bankCode}}</td>
+    </ng-container>
+    <!-- BankAddress Column -->
+    <ng-container matColumnDef="bankAddress">
+      <th mat-header-cell *matHeaderCellDef> Адрес банка </th>
+      <td mat-cell *matCellDef="let element"> {{element.bankAddress}}</td>
+    </ng-container>
+    <!-- UNP Column -->
+    <ng-container matColumnDef="unp">
+      <th mat-header-cell *matHeaderCellDef> УНП </th>
+      <td mat-cell *matCellDef="let element"> {{element.unp}}</td>
+    </ng-container>
+    <!-- PaymentAccount Column -->
+    <ng-container matColumnDef="paymentAccount">
+      <th mat-header-cell *matHeaderCellDef> Р/с </th>
+      <td mat-cell *matCellDef="let element"> {{element.paymentAccount}}</td>
+    </ng-container>
+    <!-- Actions Column-->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" type="button" (click)="editOrganization(element)" >Редактировать</button>
+        <button mat-raised-button color="warn" type="button" (click)="deleteOrganization(element.id)">Удалить</button>
+       </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[10, 20, 30, 40, 50]" showFirstLastButtons></mat-paginator>
+</div>
+<button mat-raised-button type="button" (click)="toAddOrganization()" >Добавить изготовителя</button>

@@ -24,7 +24,7 @@ namespace Diplom.WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products.Include(i => i.Customer).ToListAsync();
         }
 
         // GET: api/Products/5

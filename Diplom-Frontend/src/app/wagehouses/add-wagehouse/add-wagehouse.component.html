@@ -1,1 +1,17 @@
-<p>add-wagehouse works!</p>
+<h2> Добавление продукта на склад</h2>
+<form [formGroup]="addWagehouseForm" class="container" (ngSubmit)="addCustomer()" method="POST" >
+  <mat-form-field for="product">
+    <input type="text" matInput formControlName="product" name="product" id="product" placeholder="Продукт">
+  </mat-form-field>
+
+  <mat-form-field for="count">
+    <input type="text" matInput formControlName="count" name="count" id="count" placeholder="Количество">
+  </mat-form-field>
+
+  <mat-form-field for="status">
+    <input type="text" matInput formControlName="status" name="status" id="status" placeholder="Статус">
+  </mat-form-field>
+  <div> {{ message }}</div>
+  <button mat-raised-button type="submit">Добавить</button>
+  <button mat-raised-button type="button" (click)="toWagehouseList()" >К складу</button>
+</form>

@@ -10,7 +10,9 @@ namespace Diplom.Models
     {
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public Organization Organization { get; set; }
+        public string OrganizationId { get; set; }
         public Product Product { get; set; }
+        public string ProductId { get; set; }
         public DateTime Date { get; set; }
         public double Count { get; set; }
         public double Sum { get; set; }

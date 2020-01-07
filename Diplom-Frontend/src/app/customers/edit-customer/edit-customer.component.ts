@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class EditCustomerComponent implements OnInit {
 
   editCustomerForm: FormGroup;
+  message: string;
 
   constructor(private formBuilder: FormBuilder, private customersClient: CustomersClient,
               private router: Router, private activatedRoute: ActivatedRoute) {
@@ -26,9 +27,13 @@ export class EditCustomerComponent implements OnInit {
   }
 
   editCustomer() {
-    this.customersClient.putCustomer(this.editCustomerForm.get('id').value, this.editCustomerForm.value).subscribe(data => {
-      console.log('yspex');
-    });
+    if (this.editCustomerForm.valid) {
+      this.customersClient.putCustomer(this.editCustomerForm.get('id').value, this.editCustomerForm.value).subscribe(data => {
+        this.message = 'Производитель изменен';
+      });
+    } else {
+      this.message = 'Производитель не изменен';
+    }
   }
 
   toCustomerList() {

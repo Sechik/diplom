@@ -1,1 +1,42 @@
-<p>add-organization works!</p>
+<h2> Добавление организации</h2>
+<form [formGroup]="addOrganizationForm" class="container" (ngSubmit)="addOrganization()" method="POST" >
+  <mat-form-field for="name">
+    <input type="text" matInput formControlName="name" name="name" id="name" placeholder="Название изготовителя">
+  </mat-form-field>
+
+  <mat-form-field for="address">
+    <input type="text" matInput formControlName="address" name="address" id="address" placeholder="Адрес">
+  </mat-form-field>
+
+  <mat-form-field for="phone">
+    <input type="text" matInput formControlName="phone" name="phone" id="phone" placeholder="Телефон">
+  </mat-form-field>
+
+  <mat-form-field for="isJuridical">
+    <input type="text" matInput formControlName="isJuridical" name="isJuridical" id="isJuridical" placeholder="Юр лицо">
+  </mat-form-field>
+
+  <mat-form-field for="contract">
+    <input type="text" matInput formControlName="contract" name="contract" id="contract" placeholder="№ договора">
+  </mat-form-field>
+
+  <mat-form-field for="bankCode">
+    <input type="text" matInput formControlName="bankCode" name="bankCode" id="bankCode" placeholder="Код банка">
+  </mat-form-field>
+
+  <mat-form-field for="bankAddress">
+    <input type="text" matInput formControlName="bankAddress" name="bankAddress" id="bankAddress" placeholder="Адрес банка">
+  </mat-form-field>
+
+  <mat-form-field for="unp">
+    <input type="text" matInput formControlName="unp" name="unp" id="unp" placeholder="УНП">
+  </mat-form-field>
+
+  <mat-form-field for="paymentAccount">
+    <input type="text" matInput formControlName="paymentAccount" name="paymentAccount" id="paymentAccount" placeholder="Р/с">
+  </mat-form-field>
+  <div> {{ message }}</div>
+  <button mat-raised-button type="submit">Добавить</button>
+  <button mat-raised-button type="button" (click)="toOrganizationsList()" >К списку организаций</button>
+
+</form>

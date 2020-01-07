@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { ProductsClient } from 'src/app/api-service.service';
+import { ProductsClient, Customer, CustomersClient } from 'src/app/api-service.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
 @Component({
@@ -14,16 +14,29 @@ export class AddProductComponent implements OnInit {
   addProductForm: FormGroup;
   message: string;
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: Observable<string[]>;
-
-  constructor(private formBuilder: FormBuilder, private productsClient: ProductsClient, private router: Router) { }
+  options: Customer[];
+  filteredOptions: Observable<Customer[]>;
+  constructor(private formBuilder: FormBuilder, private productsClient: ProductsClient, private router: Router,
+              private customersClient: CustomersClient) {
+                this.addProductForm = this.formBuilder.group({
+                  name: ['', Validators.required],
+                  cost: ['', Validators.required],
+                  customer: ['', Validators.required],
+                  measure: ['', Validators.required]
+                });
+              }
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+    /*this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => typeof value === 'string' ? value : value.name),
+        map(name => name ? this._filter(name) : this.options.slice())
+      );*/
+    this.customersClient.getCustomers().subscribe(data => {
+      this.options = data;
+      this.filteredOptions = of(this.options);
+    });
   }
 
   addProduct() {
@@ -36,12 +49,16 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+  displayFn(customer?: Customer): string | undefined {
+    return customer ? customer.name : undefined;
+  }
+
   toProductList() {
     this.router.navigate(['list-product']);
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+  private _filter(name: string): Customer[] {
+    const filterValue = name.toLowerCase();
+    return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
 }

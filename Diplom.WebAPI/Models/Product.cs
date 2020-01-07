@@ -11,6 +11,7 @@ namespace Diplom.Models
         public string Name { get; set; }
         public double Cost { get; set; }
         public Customer Customer { get; set; }
+        public string CustomerId { get; set; }
         public string Measure { get; set; }
     }
 }

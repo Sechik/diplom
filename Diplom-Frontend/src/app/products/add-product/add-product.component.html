@@ -9,10 +9,10 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input type="text" placeholder="Производитель" formControlName="customer" name="customer" id="customer" matInput [formControl]="myControl" [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option}}
+    <input type="text" placeholder="Производитель" matInput [formControl]="myControl" [matAutocomplete]="auto" formControlName="customer" name="customer" id="customer">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
+        {{option.name}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
