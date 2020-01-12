@@ -1,6 +1,7 @@
 table {
   width: 100%;
   align-items: center;
+  margin:auto;
 }
 
 th.mat-sort-header-sorted {
@@ -10,4 +11,10 @@ th.mat-sort-header-sorted {
 .mat-form-field {
   font-size: 14px;
   width: 100%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

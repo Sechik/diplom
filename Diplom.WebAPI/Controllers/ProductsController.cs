@@ -79,12 +79,13 @@ namespace Diplom.WebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
+            product.Customer = null;
             _context.Products.Add(product);
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
                 if (ProductExists(product.Id))
                 {

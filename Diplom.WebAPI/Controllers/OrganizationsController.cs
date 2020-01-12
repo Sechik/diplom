@@ -24,7 +24,14 @@ namespace Diplom.WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Organization>>> GetOrganizations()
         {
-            return await _context.Organizations.ToListAsync();
+            return await _context.Organizations.Where(w => w.isJuridical).ToListAsync();
+        }
+
+        // GET: api/Organizations
+        [HttpGet("{isJuridical}")]
+        public async Task<ActionResult<IEnumerable<Organization>>> GetPeoples()
+        {
+            return await _context.Organizations.Where(w => !w.isJuridical).ToListAsync();
         }
 
         // GET: api/Organizations/5

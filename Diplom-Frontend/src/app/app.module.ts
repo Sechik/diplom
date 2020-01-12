@@ -23,6 +23,7 @@ import { EditWagehouseComponent } from './wagehouses/edit-wagehouse/edit-wagehou
 import { ListDealComponent } from './deals/list-deal/list-deal.component';
 import { AddDealComponent } from './deals/add-deal/add-deal.component';
 import { EditDealComponent } from './deals/edit-deal/edit-deal.component';
+import { LoginMenuComponent } from './Autorization/login-menu/login-menu.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EditDealComponent } from './deals/edit-deal/edit-deal.component';
     ListDealComponent,
     AddDealComponent,
     EditDealComponent,
+    LoginMenuComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ namespace Diplom.Models
         public string Phone { get; set; }
         public bool isJuridical { get; set; }
         public string Contract { get; set; }
+        public string BankName { get; set; }
         public string BankCode { get; set; }
         public string BankAddress { get; set; }
         public string UNP { get; set; }

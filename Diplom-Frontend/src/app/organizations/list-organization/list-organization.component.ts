@@ -18,7 +18,10 @@ export class ListOrganizationComponent implements OnInit, AfterViewInit {
   paginator: MatPaginator;
   sort: MatSort;
 
-  constructor(private organizationsClient: OrganizationsClient, private router: Router) { }
+  constructor(private organizationsClient: OrganizationsClient, private router: Router) {
+    this.organizationsClient.getOrganizations().subscribe(data =>
+      this.organizations.data = data);
+  }
 
   @ViewChild(MatPaginator, {static: false}) set setPaginator(paginator: MatPaginator) {
     this.organizations.paginator = paginator;

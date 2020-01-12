@@ -13,6 +13,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListOrganizationComponent } from './organizations/list-organization/list-organization.component';
 import { EditDealComponent } from './deals/edit-deal/edit-deal.component';
+import { ListDealComponent } from './deals/list-deal/list-deal.component';
 
 const routes: Routes = [
   { path: 'add-customer', component: AddCustomerComponent },
@@ -29,7 +30,7 @@ const routes: Routes = [
   { path: 'list-wagehouse', component: ListWagehouseComponent },
   { path: 'add-deal', component: AddDealComponent },
   { path: 'edit-deal', component: EditDealComponent },
-  { path: 'list-deal', component: ListWagehouseComponent }
+  { path: 'list-deal', component: ListDealComponent }
   // { path : '', component : ListCustomerComponent }
 ];
 

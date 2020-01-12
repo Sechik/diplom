@@ -1,4 +1,4 @@
-<h2> Добавление продукта</h2>
+<h2> Добавление товара/услуги</h2>
 <form [formGroup]="addProductForm" class="container" (ngSubmit)="addProduct()" method="POST" >
   <mat-form-field for="name">
     <input type="text" matInput formControlName="name" name="name" id="name" placeholder="Название продукта">
@@ -11,7 +11,7 @@
   <mat-form-field class="example-full-width">
     <input type="text" placeholder="Производитель" matInput [formControl]="myControl" [matAutocomplete]="auto" formControlName="customer" name="customer" id="customer">
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option.id">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{option.name}}
       </mat-option>
     </mat-autocomplete>
@@ -22,5 +22,5 @@
   </mat-form-field>
   <div> {{ message }}</div>
   <button mat-raised-button type="submit">Добавить</button>
-  <button mat-raised-button type="button" (click)="toProductList()" >К списку продуктов</button>
+  <button mat-raised-button type="button" (click)="toProductList()" >К списку товаров и услуг</button>
 </form>

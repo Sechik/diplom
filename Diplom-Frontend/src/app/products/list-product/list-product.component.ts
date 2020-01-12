@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ListProductComponent implements OnInit, AfterViewInit {
   products = new MatTableDataSource<Product>();
-  displayedColumns: string[] = ['id', 'name', 'cost', 'customer', 'measure', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'cost', 'costRozn', 'customer', 'measure', 'actions'];
   paginator: MatPaginator;
   sort: MatSort;
 

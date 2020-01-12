@@ -3,7 +3,7 @@
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Введите название изготовителя">
 </mat-form-field>
 
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z8" style="width: 90%; margin: auto;">
   <table mat-table [dataSource]="customers" matSort>
     <!-- Id Column -->
     <ng-container matColumnDef="id" hidden>

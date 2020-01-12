@@ -13,7 +13,7 @@ import { startWith, map } from 'rxjs/operators';
 export class AddProductComponent implements OnInit {
   addProductForm: FormGroup;
   message: string;
-  myControl = new FormControl();
+  customer = new FormControl();
   options: Customer[];
   filteredOptions: Observable<Customer[]>;
   constructor(private formBuilder: FormBuilder, private productsClient: ProductsClient, private router: Router,
@@ -27,18 +27,18 @@ export class AddProductComponent implements OnInit {
               }
 
   ngOnInit() {
-    /*this.filteredOptions = this.myControl.valueChanges
+    this.customersClient.getCustomers().subscribe(data => {
+      this.options = data;
+      this.filteredOptions = this.customer.valueChanges
       .pipe(
         startWith(''),
         map(value => typeof value === 'string' ? value : value.name),
         map(name => name ? this._filter(name) : this.options.slice())
-      );*/
-    this.customersClient.getCustomers().subscribe(data => {
-      this.options = data;
-      this.filteredOptions = of(this.options);
+      );
     });
-  }
 
+  }
+  // TODO Единицы измерения сделать списком кг., л., шт. и пустую
   addProduct() {
     if (this.addProductForm.valid) {
       this.productsClient.postProduct(this.addProductForm.value).subscribe(data => {
