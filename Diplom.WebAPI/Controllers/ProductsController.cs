@@ -24,7 +24,8 @@ namespace Diplom.WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.Include(i => i.Customer).ToListAsync();
+            var result = await _context.Products.Include(i => i.Customer).ToListAsync();
+            return result;
         }
 
         // GET: api/Products/5
@@ -47,6 +48,7 @@ namespace Diplom.WebAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(string id, Product product)
         {
+            product.Customer = null;
             if (id != product.Id)
             {
                 return BadRequest();
@@ -85,7 +87,7 @@ namespace Diplom.WebAPI.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException)
             {
                 if (ProductExists(product.Id))
                 {

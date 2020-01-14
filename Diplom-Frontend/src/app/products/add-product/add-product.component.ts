@@ -22,7 +22,8 @@ export class AddProductComponent implements OnInit {
                   name: ['', Validators.required],
                   cost: ['', Validators.required],
                   customer: ['', Validators.required],
-                  measure: ['', Validators.required]
+                  customerid: ['', Validators.required],
+                  measure: ['']
                 });
               }
 
@@ -40,6 +41,7 @@ export class AddProductComponent implements OnInit {
   }
   // TODO Единицы измерения сделать списком кг., л., шт. и пустую
   addProduct() {
+    this.addProductForm.controls.customerid.setValue(this.addProductForm.controls.customer.value.id);
     if (this.addProductForm.valid) {
       this.productsClient.postProduct(this.addProductForm.value).subscribe(data => {
         this.message = 'Продукт добавлен';

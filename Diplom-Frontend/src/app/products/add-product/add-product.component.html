@@ -9,7 +9,7 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input type="text" placeholder="Производитель" matInput [formControl]="myControl" [matAutocomplete]="auto" formControlName="customer" name="customer" id="customer">
+    <input type="text" placeholder="Производитель" matInput [matAutocomplete]="auto" formControlName="customer" name="customer" id="customer">
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{option.name}}
@@ -17,8 +17,15 @@
     </mat-autocomplete>
   </mat-form-field>
 
+  <input type="text" matInput formControlName="customerid" name="customerid" id="customerid" hidden>
+
   <mat-form-field for="measure">
-    <input type="text" matInput formControlName="measure" name="measure" id="measure" placeholder="Ед. измер.">
+    <mat-label>Ед. измер.</mat-label>
+    <select matNativeControl formControlName="measure" name="measure" id="measure">
+      <option value="кг.">кг.</option>
+      <option value="шт.">шт.</option>
+      <option value="л.">л.</option>
+    </select>
   </mat-form-field>
   <div> {{ message }}</div>
   <button mat-raised-button type="submit">Добавить</button>

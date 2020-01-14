@@ -45,7 +45,10 @@ export class ListProductComponent implements OnInit, AfterViewInit {
     this.router.navigate(['add-product']);
   }
 
-  editProduct(product: Product) {}
+  editProduct(editProduct: Product) {
+    this.router.navigate(['edit-product'],  { queryParams: {id: editProduct.id, name: editProduct.name,
+      cost: editProduct.cost, customer: editProduct.customer, customerid: editProduct.customerId, measure: editProduct.measure } });
+  }
 
   deleteProduct(id: string) {
     this.productsClient.deleteProduct(id).subscribe(response => {
