@@ -1,12 +1,15 @@
-<ul class="navbar-nav">
-  <li class="nav-item">
-      <a  class="nav-link text-dark" [routerLink]='["/authentication/profile"]' title="Manage">Здравствуйте, Анна</a>
-  </li>
-  <li class="nav-item">
-      <a  class="nav-link text-dark" [routerLink]='["/authentication/logout"]' [state]='{ local: true }' title="Logout">Выйти</a>
-  </li>
-</ul>
-<ul class="navbar-nav">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<nav class="navbar navbar-expand-sm bg-light">
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]='["/authentication/profile"]' title="Manage" >Здравствуйте, Анна</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]='["/authentication/logout"]' [state]='{ local: true }' title="Logout">Выйти</a>
+    </li>
+  </ul>
+</nav>
 <!--<li class="nav-item">
       <a class="nav-link text-dark" [routerLink]='["/authentication/register"]'>Регистрация</a>
   </li>

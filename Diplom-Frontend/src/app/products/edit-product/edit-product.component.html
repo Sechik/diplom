@@ -1,4 +1,4 @@
-<h2> Изменение продукта</h2>
+<h2> Изменение товара/услуги</h2>
 <form [formGroup]="editProductForm" class="container" (ngSubmit)="editProduct()" method="POST" >
   <mat-form-field for="name">
     <input type="text" matInput formControlName="name" name="name" id="name" placeholder="Название продукта">
@@ -28,5 +28,5 @@
 
   <div> {{ message }}</div>
   <button mat-raised-button type="submit">Сохранить</button>
-  <button mat-raised-button type="button" (click)="toProductList()" >К списку продуктов</button>
+  <button mat-raised-button type="button" (click)="toProductList()" >К списку товаров и услуг</button>
 </form>

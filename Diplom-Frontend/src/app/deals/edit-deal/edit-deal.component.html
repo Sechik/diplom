@@ -1,1 +1,39 @@
-<p>edit-deal works!</p>
+<h2> Редактирование сделки</h2>
+<form [formGroup]="editDealForm" class="container" (ngSubmit)="editDeal()" method="POST" >
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Организация" matInput [matAutocomplete]="auto" formControlName="organization" name="organization" id="organization">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnOrg">
+      <mat-option *ngFor="let option of filteredOptionsOrg | async" [value]="option">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Продукт" matInput [matAutocomplete]="auto" formControlName="product" name="product" id="product">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFnProd">
+      <mat-option *ngFor="let option of filteredOptionsProd | async" [value]="option">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field for="date">
+    <input type="date" matInput formControlName="date" name="date" id="date" placeholder="Дата">
+  </mat-form-field>
+
+  <mat-form-field for="count">
+    <input type="number" matInput formControlName="count" name="count" id="count" placeholder="Количество">
+  </mat-form-field>
+
+  <mat-form-field for="sum">
+    <input type="number" matInput formControlName="sum" name="sum" id="sum" placeholder="Сумма">
+  </mat-form-field>
+
+  <input type="text" matInput formControlName="organizationid" name="organizationid" id="organizationid" hidden>
+  <input type="text" matInput formControlName="productid" name="productid" id="productid" hidden>
+
+  <div> {{ message }}</div>
+  <button mat-raised-button type="submit">Изменить</button>
+  <button mat-raised-button type="button" (click)="toDealList()" >К списку товаров и услуг</button>
+</form>
